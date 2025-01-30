@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín UwU</title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/5a/4d/71/5a4d71a5e42b90e0536f0304c0484cb6.jpg'); /* Imagen de Kuromi */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+        }
+        .container {
+            margin-top: 15%;
+        }
+        h1 {
+            font-size: 2.5em;
+            background-color: rgba(180, 130, 255, 0.6); /* Morado claro */
+            display: inline-block;
+            padding: 15px;
+            border-radius: 15px;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: pink;
+        }
+        .no {
+            background-color: lightgray;
+            position: absolute;
+        }
+        .message {
+            font-size: 1.8em;
+            margin-top: 20px;
+            background-color: rgba(180, 130, 255, 0.6); /* Morado claro */
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Erika preciosa, ¿quieres ser mi San Valentín? uwu</h1>
+        <div class="buttons">
+            <button class="yes">Sí UwU</button>
+            <button class="no">No</button>
+        </div>
+        <div class="message" id="message"></div>
+    </div>
+    
+    <script>
+        const noButton = document.querySelector('.no');
+        const yesButton = document.querySelector('.yes');
+        const messageDiv = document.getElementById('message');
+        const funnyMessages = ["Intenta de nuevo", "Yo creo que no lo has pensado bien", "¿Segura?", "Vamos, piénsalo otra vez", "Te doy otra oportunidad"]; 
+        
+        noButton.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+            
+            messageDiv.textContent = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+            messageDiv.style.display = 'block';
+        });
+        
+        yesButton.addEventListener('click', () => {
+            messageDiv.textContent = "Ya sabía que sí querías uvu <3";
+            messageDiv.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
