@@ -1,87 +1,97 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>San Valentín UwU</title>
+    <title>Erika</title>
     <style>
         body {
-            background-image: url('https://i.pinimg.com/originals/5a/4d/71/5a4d71a5e42b90e0536f0304c0484cb6.jpg'); /* Imagen de Kuromi */
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            font-family: 'Comic Sans MS', cursive;
-            color: white;
+            background-color: #dda0dd;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
-        .container {
-            margin-top: 15%;
-        }
+
         h1 {
-            font-size: 2.5em;
-            background-color: rgba(180, 130, 255, 0.6); /* Morado claro */
-            display: inline-block;
-            padding: 15px;
-            border-radius: 15px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
         }
-        .buttons {
-            margin-top: 20px;
-            position: relative;
+
+        .button-container {
+            display: flex;
+            gap: 20px;
         }
+
         button {
-            font-size: 1.5em;
             padding: 10px 20px;
-            margin: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
+            font-size: 18px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.2s;
         }
-        .yes {
-            background-color: pink;
+
+        #yes-button {
+            background-color: #32cd32;
+            color: #fff;
         }
-        .no {
-            background-color: lightgray;
+
+        #yes-button:hover {
+            transform: scale(1.1);
+        }
+
+        #no-button {
+            background-color: #ff4500;
+            color: #fff;
             position: absolute;
         }
+
+        #no-button:hover {
+            transform: scale(1.1);
+        }
+
         .message {
-            font-size: 1.8em;
             margin-top: 20px;
-            background-color: rgba(180, 130, 255, 0.6); /* Morado claro */
-            padding: 10px;
-            border-radius: 10px;
-            display: none;
+            color: #fff;
+            font-size: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Erika preciosa, ¿quieres ser mi San Valentín? uwu</h1>
-        <div class="buttons">
-            <button class="yes">Sí UwU</button>
-            <button class="no">No</button>
-        </div>
-        <div class="message" id="message"></div>
+    <h1>Erika preciosa, ¿quieres ser mi San Valentín? uwu</h1>
+    <div class="button-container">
+        <button id="yes-button">Sí UwU</button>
+        <button id="no-button">No</button>
     </div>
-    
+    <div class="message" id="message"></div>
+
     <script>
-        const noButton = document.querySelector('.no');
-        const yesButton = document.querySelector('.yes');
-        const messageDiv = document.getElementById('message');
-        const funnyMessages = ["Intenta de nuevo", "Yo creo que no lo has pensado bien", "¿Segura?", "Vamos, piénsalo otra vez", "Te doy otra oportunidad"]; 
-        
-        noButton.addEventListener('mouseover', () => {
-            const x = Math.random() * (window.innerWidth - 100);
-            const y = Math.random() * (window.innerHeight - 50);
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-            
-            messageDiv.textContent = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
-            messageDiv.style.display = 'block';
+        const noButton = document.getElementById('no-button');
+        const yesButton = document.getElementById('yes-button');
+        const message = document.getElementById('message');
+
+        const container = document.querySelector('.button-container');
+
+        noButton.addEventListener('mouseenter', () => {
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            const offsetX = Math.random() * (containerRect.width - buttonRect.width);
+            const offsetY = Math.random() * (containerRect.height - buttonRect.height);
+
+            noButton.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            message.textContent = "Intenta de nuevo";
         });
-        
+
         yesButton.addEventListener('click', () => {
-            messageDiv.textContent = "Ya sabía que sí querías uvu <3";
-            messageDiv.style.display = 'block';
+            message.textContent = "Ya sabía que sí querías uvu <3";
         });
     </script>
 </body>
