@@ -21,6 +21,7 @@
             color: #fff;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .button-container {
@@ -67,6 +68,22 @@
             color: #fff;
             font-size: 20px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+
+            .message {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -79,7 +96,7 @@
     <div class="message" id="message"></div>
 
     <audio id="bg-music" autoplay loop>
-        <source src="https://www.youtube.com/watch?v=AhvkKR0ero8" type="audio/mpeg">
+        <source src="https://www.youtube.com/embed/YOUR_VIDEO_ID" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
