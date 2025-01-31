@@ -39,23 +39,23 @@
             font-size: 18px;
             cursor: pointer;
             transition: transform 0.2s;
-            position: absolute;
         }
 
         #yes-button {
             background-color: #32cd32;
             color: #fff;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         #yes-button:hover {
-            transform: translateX(-50%) scale(1.1);
+            transform: scale(1.1);
         }
 
         #no-button {
             background-color: #ff4500;
             color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
         }
 
         #no-button:hover {
@@ -78,12 +78,21 @@
     </div>
     <div class="message" id="message"></div>
 
+    <audio id="bg-music" autoplay loop>
+        <source src="https://www.youtube.com/watch?v=AhvkKR0ero8" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
         const noButton = document.getElementById('no-button');
         const yesButton = document.getElementById('yes-button');
         const message = document.getElementById('message');
-
         const container = document.querySelector('.button-container');
+
+        const messages = ["Intenta de nuevo", "Yo creo que no lo has pensado bien", "Vamos, inténtalo otra vez", "Seguro que quieres elegir eso?"];
+
+        // Set initial message
+        message.textContent = messages[Math.floor(Math.random() * messages.length)];
 
         noButton.addEventListener('mouseenter', () => {
             const containerRect = container.getBoundingClientRect();
@@ -92,9 +101,8 @@
             const offsetX = Math.random() * (containerRect.width - buttonRect.width);
             const offsetY = Math.random() * (containerRect.height - buttonRect.height);
 
-            noButton.style.left = `${offsetX}px`;
-            noButton.style.top = `${offsetY}px`;
-            message.textContent = "Intenta de nuevo";
+            noButton.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            message.textContent = messages[Math.floor(Math.random() * messages.length)];
         });
 
         yesButton.addEventListener('click', () => {
